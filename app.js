@@ -2,7 +2,6 @@
 let products = [];
 let cart = JSON.parse(localStorage.getItem('thingamagig_cart') || '[]');
 let activeCategory = 'All';
-let activeBrand = 'All';
 let sortBy = 'trending';
 let searchQuery = '';
 let deliveryMethod = 'post'; // 'post' or 'collect'
@@ -71,7 +70,7 @@ function startDepotCountdown() {
         
         let diff = cutoff - now;
         if (diff <= 0) {
-            timerEl.textContent = 'Open for Late Emergency Callout';
+            timerEl.textContent = 'Open for Late Gig Emergency Callout';
             return;
         }
         
@@ -119,7 +118,6 @@ function renderProducts() {
         return matchesCat && matchesSearch;
     });
 
-    // Sorting
     if (sortBy === 'price-low') {
         filtered.sort((a, b) => a.retailPrice - b.retailPrice);
     } else if (sortBy === 'price-high') {
@@ -148,7 +146,7 @@ function renderProducts() {
 
         return `
             <div class="group relative rounded-2xl transition-all duration-300 flex flex-col h-full ${isBundle ? 'bg-gradient-to-b from-navy-mid via-navy-light to-navy border border-coral/40 shadow-xl shadow-coral/10 hover:border-coral hover:shadow-coral/25' : 'glass-panel hover:border-coral/50 hover:shadow-2xl hover:shadow-coral/15'} overflow-hidden">
-                <!-- Top Visual Image Area -->
+                <!-- Visual Image Area -->
                 <div class="aspect-square bg-navy relative overflow-hidden flex items-center justify-center p-6 border-b border-white/[0.06] cursor-pointer" onclick="openProductModal('${product.id}')">
                     <img src="https://placehold.co/400x400/${product.color}?text=${encodeURIComponent(product.imageText || product.sku)}&font=montserrat" alt="${product.name}" class="w-full h-full object-contain rounded-xl group-hover:scale-105 transition-transform duration-500">
                     
@@ -173,7 +171,7 @@ function renderProducts() {
                     <!-- Quick View Overlay Action -->
                     <div class="absolute inset-0 bg-navy/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center pointer-events-none">
                         <span class="bg-white/10 backdrop-blur-md border border-white/20 text-white font-bold text-xs px-4 py-2 rounded-xl flex items-center gap-1.5 shadow-lg">
-                            <i class="ph ph-eye"></i> Quick View Specs
+                            <i class="ph ph-eye"></i> Musician Rig Note
                         </span>
                     </div>
                 </div>
@@ -188,7 +186,15 @@ function renderProducts() {
                         <h3 class="text-base font-extrabold text-white leading-snug mb-1.5 group-hover:text-coral-glow transition-colors line-clamp-2 cursor-pointer" onclick="openProductModal('${product.id}')">
                             ${product.name}
                         </h3>
-                        <p class="text-xs text-[#8B8FA3] line-clamp-2 leading-relaxed">${product.description}</p>
+                        <p class="text-xs text-[#8B8FA3] line-clamp-2 leading-relaxed mb-3">${product.description}</p>
+                        
+                        <!-- Musician Gig Wisdom Callout -->
+                        ${product.gigNote ? `
+                            <div class="bg-navy/80 p-2.5 rounded-xl border border-white/5 text-[11px] text-slate-300 flex items-start gap-2">
+                                <i class="ph ph-speaker-high text-coral-glow text-sm flex-shrink-0 mt-0.5"></i>
+                                <span class="italic text-[#8B8FA3] line-clamp-2">"${product.gigNote}"</span>
+                            </div>
+                        ` : ''}
                     </div>
 
                     <div>
@@ -200,7 +206,7 @@ function renderProducts() {
 
                         <!-- Add to Bag CTA -->
                         <div class="grid grid-cols-5 gap-2">
-                            <button onclick="openProductModal('${product.id}')" class="col-span-1 glass-panel hover:bg-navy-mid text-[#8B8FA3] hover:text-white rounded-xl flex items-center justify-center transition" title="View Specs">
+                            <button onclick="openProductModal('${product.id}')" class="col-span-1 glass-panel hover:bg-navy-mid text-[#8B8FA3] hover:text-white rounded-xl flex items-center justify-center transition" title="View Rig Specs & Gig Notes">
                                 <i class="ph ph-info text-lg"></i>
                             </button>
                             <button onclick="addToCart('${product.id}')" ${product.stock === 0 ? 'disabled' : ''} class="col-span-4 ${product.stock === 0 ? 'bg-navy-mid text-[#4A4E63] cursor-not-allowed' : 'bg-gradient-to-r from-coral to-coral-dim hover:from-coral-glow hover:to-coral text-white shadow-md shadow-coral/20 hover:shadow-coral/40'} font-bold py-2.5 px-4 rounded-xl transition-all duration-200 flex justify-center items-center gap-2 text-xs sm:text-sm">
@@ -246,6 +252,28 @@ function setupEventListeners() {
         });
     });
 }
+
+// Pre-Gig Checklist Quick Adder
+window.addChecklistToBag = function() {
+    const checkboxes = document.querySelectorAll('.gig-check:not(:checked)');
+    if (checkboxes.length === 0) {
+        showToast("Your gig bag is already fully stocked! Have a killer show! 🎸", 'success');
+        return;
+    }
+
+    let addedCount = 0;
+    checkboxes.forEach(cb => {
+        const sku = cb.dataset.sku;
+        const prod = products.find(p => p.sku === sku);
+        if (prod) {
+            addToCart(prod.id);
+            addedCount++;
+        }
+    });
+
+    showToast(`Added ${addedCount} missing emergency items to your gig bag!`, 'success');
+    toggleCart();
+};
 
 window.addToCart = function(productId) {
     const product = products.find(p => p.id === productId);
@@ -363,7 +391,7 @@ function updateCartUI() {
     if (freeShippingMeter && freeShippingText) {
         if (subtotal >= FREE_SHIPPING_THRESHOLD) {
             freeShippingMeter.style.width = '100%';
-            freeShippingText.innerHTML = '<span class="text-mint font-bold flex items-center gap-1"><i class="ph ph-check-circle"></i> Unlocked FREE UK Postal Delivery!</span>';
+            freeShippingText.innerHTML = '<span class="text-mint font-bold flex items-center gap-1"><i class="ph ph-check-circle"></i> Unlocked FREE UK Postal Delivery + Free Stage Picks!</span>';
         } else {
             const pct = Math.min(100, (subtotal / FREE_SHIPPING_THRESHOLD) * 100);
             freeShippingMeter.style.width = `${pct}%`;
@@ -421,10 +449,20 @@ window.openProductModal = function(productId) {
                             
                             <p class="text-xs text-[#8B8FA3] leading-relaxed mb-4">${product.description}</p>
                             
+                            <!-- Musician Rig Note -->
+                            ${product.gigNote ? `
+                                <div class="bg-navy p-3.5 rounded-xl border border-coral/30 text-xs mb-4">
+                                    <div class="text-coral-glow font-extrabold text-[11px] uppercase tracking-wider mb-1 flex items-center gap-1.5">
+                                        <i class="ph ph-speaker-high"></i> Musician Rig Note:
+                                    </div>
+                                    <p class="text-[#F0F0F5] italic leading-relaxed text-xs">"${product.gigNote}"</p>
+                                </div>
+                            ` : ''}
+
                             <!-- Detailed Specs Breakdown -->
                             ${product.specs ? `
-                                <div class="bg-navy p-3.5 rounded-xl border border-navy-border text-xs space-y-2 mb-4">
-                                    <strong class="text-white block text-xs border-b border-navy-border pb-1">Technical Specifications:</strong>
+                                <div class="bg-navy p-3.5 rounded-xl border border-navy-border text-xs space-y-1.5 mb-4">
+                                    <strong class="text-white block text-xs border-b border-navy-border pb-1">Stage Specifications:</strong>
                                     ${Object.entries(product.specs).map(([key, val]) => `
                                         <div class="flex justify-between"><span class="text-[#8B8FA3]">${key}:</span><strong class="text-white">${val}</strong></div>
                                     `).join('')}
@@ -489,12 +527,12 @@ window.openCheckoutModal = function() {
 
                     <div>
                         <label class="block text-xs font-bold text-[#8B8FA3] mb-1">Customer / Act Name *</label>
-                        <input type="text" id="custName" required placeholder="e.g. Nathan / The Great Unknown" class="w-full bg-navy border border-navy-border rounded-xl px-3.5 py-2.5 text-white text-sm focus:border-coral focus:outline-none">
+                        <input type="text" id="custName" required placeholder="e.g. Nathan / The Green Tangerine" class="w-full bg-navy border border-navy-border rounded-xl px-3.5 py-2.5 text-white text-sm focus:border-coral focus:outline-none">
                     </div>
 
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
                         <div>
-                            <label class="block text-xs font-bold text-[#8B8FA3] mb-1">Mobile Number (SMS Dispatch) *</label>
+                            <label class="block text-xs font-bold text-[#8B8FA3] mb-1">Mobile Number (SMS Updates) *</label>
                             <input type="tel" id="custPhone" required placeholder="07700 900123" class="w-full bg-navy border border-navy-border rounded-xl px-3.5 py-2.5 text-white text-sm focus:border-coral focus:outline-none">
                         </div>
                         <div>
@@ -520,7 +558,7 @@ window.openCheckoutModal = function() {
 
                     <div>
                         <label class="block text-xs font-bold text-[#8B8FA3] mb-1">Gig Notes / Show Urgency (Optional)</label>
-                        <input type="text" id="custNotes" placeholder="e.g. Gig tonight in Cardiff at 7pm" class="w-full bg-navy border border-navy-border rounded-xl px-3.5 py-2 text-white text-sm focus:border-coral focus:outline-none">
+                        <input type="text" id="custNotes" placeholder="e.g. Gig tonight in Cardiff / Newport at 7pm" class="w-full bg-navy border border-navy-border rounded-xl px-3.5 py-2 text-white text-sm focus:border-coral focus:outline-none">
                     </div>
 
                     <div class="pt-2">
