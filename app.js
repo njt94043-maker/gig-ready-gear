@@ -1,6 +1,6 @@
-// GigReady Gear Storefront Logic
+// Thingamagig (thingamagig.co.uk) Storefront Logic
 let products = [];
-let cart = JSON.parse(localStorage.getItem('gigready_cart') || '[]');
+let cart = JSON.parse(localStorage.getItem('thingamagig_cart') || '[]');
 let activeCategory = 'All';
 let searchQuery = '';
 let deliveryMethod = 'post'; // 'post' or 'collect'
@@ -40,8 +40,7 @@ async function loadCatalog() {
         const res = await fetch('./catalog-data.json');
         if (res.ok) {
             products = await res.json();
-            // sync with shared storage if modified by backend
-            const customCatalog = localStorage.getItem('gigready_catalog');
+            const customCatalog = localStorage.getItem('thingamagig_catalog');
             if (customCatalog) {
                 products = JSON.parse(customCatalog);
             }
@@ -91,7 +90,7 @@ function renderProducts() {
         productGrid.innerHTML = `
             <div class="col-span-full py-16 text-center text-slate-400">
                 <i class="ph ph-magnifying-glass text-5xl opacity-30 mb-3 block"></i>
-                <p class="text-lg font-semibold text-white">No gear found matching your search</p>
+                <p class="text-lg font-semibold text-white">No gig essentials found matching your search</p>
                 <p class="text-sm">Try another keyword or category filter.</p>
             </div>
         `;
@@ -175,7 +174,7 @@ window.addToCart = function(productId) {
 
     saveCart();
     updateCartUI();
-    showToast(`Added ${product.name} to basket`);
+    showToast(`Added ${product.name} to Thingamagig basket`);
     
     cartBtn.classList.add('scale-110', 'text-brand-500');
     setTimeout(() => cartBtn.classList.remove('scale-110', 'text-brand-500'), 200);
@@ -201,7 +200,7 @@ window.updateQuantity = function(productId, change) {
 };
 
 function saveCart() {
-    localStorage.setItem('gigready_cart', JSON.stringify(cart));
+    localStorage.setItem('thingamagig_cart', JSON.stringify(cart));
 }
 
 function updateCartUI() {
@@ -367,7 +366,7 @@ window.openCheckoutModal = function() {
 
                     <div>
                         <label class="block text-xs font-semibold text-slate-400 mb-1">Gig Notes / Urgency (Optional)</label>
-                        <input type="text" id="custNotes" placeholder="e.g. Gig tonight in Cardiff at 7pm" class="w-full bg-dark-900 border border-dark-700 rounded-lg px-3 py-2 text-white text-sm focus:border-brand-500 focus:outline-none">
+                        <input type="text" id="custNotes" placeholder="e.g. Soundcheck in Cardiff tonight at 6pm" class="w-full bg-dark-900 border border-dark-700 rounded-lg px-3 py-2 text-white text-sm focus:border-brand-500 focus:outline-none">
                     </div>
 
                     <div class="pt-2">
@@ -384,7 +383,7 @@ window.openCheckoutModal = function() {
 
 window.handlePlaceOrder = function(e) {
     e.preventDefault();
-    const orderId = 'ORD-' + Math.floor(100000 + Math.random() * 900000);
+    const orderId = 'TMG-' + Math.floor(100000 + Math.random() * 900000);
     const subtotal = cart.reduce((sum, item) => sum + (item.retailPrice * item.quantity), 0);
     const fee = deliveryMethod === 'post' ? (subtotal >= FREE_SHIPPING_THRESHOLD ? 0 : POSTAL_FEE) : 0;
     const total = subtotal + fee;
@@ -408,9 +407,9 @@ window.handlePlaceOrder = function(e) {
     };
 
     // Save to shared orders store for Office Backend
-    const existingOrders = JSON.parse(localStorage.getItem('gigready_orders') || '[]');
+    const existingOrders = JSON.parse(localStorage.getItem('thingamagig_orders') || '[]');
     existingOrders.unshift(order);
-    localStorage.setItem('gigready_orders', JSON.stringify(existingOrders));
+    localStorage.setItem('thingamagig_orders', JSON.stringify(existingOrders));
 
     // Deduct stock locally
     products.forEach(p => {
@@ -419,7 +418,7 @@ window.handlePlaceOrder = function(e) {
             p.stock = Math.max(0, p.stock - cartItem.quantity);
         }
     });
-    localStorage.setItem('gigready_catalog', JSON.stringify(products));
+    localStorage.setItem('thingamagig_catalog', JSON.stringify(products));
 
     // Clear cart
     cart = [];
@@ -438,7 +437,7 @@ window.handlePlaceOrder = function(e) {
                 <div class="w-16 h-16 bg-brand-500/20 text-brand-500 rounded-full flex items-center justify-center mx-auto mb-4">
                     <i class="ph ph-confetti text-3xl"></i>
                 </div>
-                <h3 class="text-2xl font-extrabold text-white mb-1">Order Confirmed!</h3>
+                <h3 class="text-2xl font-extrabold text-white mb-1">Thingamagig Order Confirmed!</h3>
                 <p class="text-brand-400 font-mono text-sm font-semibold mb-3">Ref: #${orderId}</p>
                 <p class="text-slate-300 text-sm mb-6">
                     ${deliveryMethod === 'collect' 
@@ -451,7 +450,7 @@ window.handlePlaceOrder = function(e) {
                     <div class="flex justify-between text-slate-400"><span>Status:</span><span class="text-emerald-400 font-bold">${order.status}</span></div>
                 </div>
                 <button onclick="document.getElementById('orderSuccessModal').remove()" class="w-full bg-brand-500 hover:bg-brand-600 text-white font-bold py-3 rounded-lg transition shadow-lg shadow-brand-500/20">
-                    Back to Store
+                    Back to Thingamagig
                 </button>
             </div>
         </div>
