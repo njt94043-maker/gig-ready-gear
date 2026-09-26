@@ -7,7 +7,7 @@
     
     <!-- PWA Manifest & Meta -->
     <link rel="manifest" href="./manifest.json">
-    <meta name="theme-color" content="#f97316">
+    <meta name="theme-color" content="#ec4899">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="Thingamagig">
@@ -33,25 +33,37 @@
                     },
                     colors: {
                         brand: {
-                            50: '#fff7ed',
-                            100: '#ffedd5',
-                            200: '#fed7aa',
-                            300: '#fdba74',
-                            400: '#fb923c',
-                            500: '#f97316', // Tangerine / Electric Orange
-                            600: '#ea580c',
-                            700: '#c2410c',
-                            800: '#9a3412',
-                            900: '#7c2d12',
-                            950: '#431407',
+                            50: '#fdf2f8',
+                            100: '#fce7f3',
+                            200: '#fbcfe8',
+                            300: '#f9a8d4',
+                            400: '#f472b6',
+                            500: '#ec4899', // Electric Hot Pink
+                            600: '#db2777',
+                            700: '#be185d',
+                            800: '#9d174d',
+                            900: '#831843',
+                            950: '#500724',
+                        },
+                        cyan: {
+                            50: '#ecfeff',
+                            100: '#cffafe',
+                            200: '#a5f3fc',
+                            300: '#67e8f9',
+                            400: '#22d3ee',
+                            500: '#06b6d4', // Electric Cyan Blue
+                            600: '#0891b2',
+                            700: '#0e7490',
+                            800: '#155e75',
+                            900: '#164e63',
                         },
                         dark: {
-                            950: '#070A10',
-                            900: '#0B0F19',
-                            850: '#101623',
-                            800: '#151C2C',
-                            700: '#1E293B',
-                            600: '#334155',
+                            950: '#070913', // Ultra deep stage black
+                            900: '#0B0F1D', // Stage dark
+                            850: '#11162B', // Card background
+                            800: '#171E38', // Elevated surface
+                            700: '#222B4C', // Border
+                            600: '#323E68',
                         }
                     }
                 }
@@ -65,14 +77,14 @@
             width: 5px;
         }
         .cart-scroll::-webkit-scrollbar-track {
-            background: #0B0F19; 
+            background: #070913; 
         }
         .cart-scroll::-webkit-scrollbar-thumb {
-            background: #1E293B; 
+            background: #222B4C; 
             border-radius: 10px;
         }
         .cart-scroll::-webkit-scrollbar-thumb:hover {
-            background: #f97316; 
+            background: #ec4899; 
         }
 
         @keyframes slideUp {
@@ -82,11 +94,11 @@
         .toast-enter { animation: slideUp 0.25s ease-out forwards; }
     </style>
 </head>
-<body class="bg-dark-900 text-slate-200 antialiased overflow-x-hidden selection:bg-brand-500 selection:text-white min-h-screen flex flex-col">
+<body class="bg-dark-950 text-slate-200 antialiased overflow-x-hidden selection:bg-brand-500 selection:text-white min-h-screen flex flex-col">
 
-    <!-- Top Announcement Bar -->
-    <div class="bg-gradient-to-r from-brand-600 via-amber-600 to-brand-600 text-white text-xs font-bold py-2 px-4 text-center tracking-wide flex justify-center items-center gap-2">
-        <i class="ph ph-lightning text-amber-200 text-base"></i>
+    <!-- Top Announcement Bar (Pink & Cyan Gradient) -->
+    <div class="bg-gradient-to-r from-brand-600 via-purple-600 to-cyan-600 text-white text-xs font-bold py-2 px-4 text-center tracking-wide flex justify-center items-center gap-2 shadow-md">
+        <i class="ph ph-lightning text-yellow-300 text-base"></i>
         <span>Thingamagig South Wales Rehearsal & Gig Depot: 15-Minute Rapid Collection Available Tonight!</span>
     </div>
 
@@ -96,12 +108,14 @@
             <div class="flex justify-between items-center h-20">
                 <!-- Logo -->
                 <div class="flex-shrink-0 flex items-center gap-3 cursor-pointer" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
-                    <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-600 to-amber-500 flex items-center justify-center shadow-lg shadow-brand-500/30 text-white text-2xl font-black">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-brand-500 to-cyan-400 flex items-center justify-center shadow-lg shadow-brand-500/30 text-white text-2xl font-black">
                         <i class="ph ph-guitar"></i>
                     </div>
                     <div>
-                        <span class="font-display font-black text-2xl tracking-tight text-white block leading-tight">thingama<span class="text-brand-500">gig</span></span>
-                        <span class="text-[10px] text-slate-400 font-semibold tracking-wider uppercase block">Musician Consumables &bull; thingamagig.co.uk</span>
+                        <span class="font-display font-black text-2xl tracking-tight text-white block leading-tight">
+                            thingama<span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-400 to-cyan-400">gig</span>
+                        </span>
+                        <span class="text-[10px] text-cyan-300 font-semibold tracking-wider uppercase block">Musician Consumables &bull; thingamagig.co.uk</span>
                     </div>
                 </div>
                 
@@ -109,20 +123,20 @@
                 <div class="hidden md:flex flex-1 max-w-md mx-8">
                     <div class="relative w-full">
                         <i class="ph ph-magnifying-glass absolute left-3.5 top-3 text-slate-400 text-lg"></i>
-                        <input type="text" id="searchInput" placeholder="Search strings (10-46), 5A sticks, XLR leads..." class="w-full bg-dark-800 border border-dark-700 rounded-full pl-10 pr-4 py-2.5 text-sm text-white placeholder-slate-400 focus:outline-none focus:border-brand-500 transition-all">
+                        <input type="text" id="searchInput" placeholder="Search strings (10-46), 5A sticks, XLR leads..." class="w-full bg-dark-850 border border-dark-700 rounded-full pl-10 pr-4 py-2.5 text-sm text-white placeholder-slate-400 focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 transition-all">
                     </div>
                 </div>
 
                 <!-- Right Actions -->
                 <div class="flex items-center gap-4">
-                    <a href="../backend/index.html" class="hidden sm:flex items-center gap-1.5 text-xs font-semibold text-slate-400 hover:text-brand-400 bg-dark-800 hover:bg-dark-700 px-3 py-2 rounded-lg border border-dark-700 transition">
-                        <i class="ph ph-sliders"></i> Office Portal
+                    <a href="../backend/index.html" class="hidden sm:flex items-center gap-1.5 text-xs font-semibold text-slate-300 hover:text-cyan-300 bg-dark-850 hover:bg-dark-800 px-3 py-2 rounded-lg border border-dark-700 transition">
+                        <i class="ph ph-sliders text-brand-400"></i> Office Portal
                     </a>
 
                     <!-- Cart Button -->
-                    <button id="cartBtn" class="relative p-2.5 text-slate-300 hover:text-white bg-dark-800 hover:bg-dark-700 rounded-xl border border-dark-700 transition group focus:outline-none">
-                        <i class="ph ph-shopping-bag text-2xl group-hover:text-brand-500 transition"></i>
-                        <span id="cartBadge" class="absolute -top-1.5 -right-1.5 inline-flex items-center justify-center px-2 py-0.5 text-xs font-extrabold leading-none text-white bg-brand-500 rounded-full hidden shadow-md shadow-brand-500/50">0</span>
+                    <button id="cartBtn" class="relative p-2.5 text-slate-300 hover:text-white bg-dark-850 hover:bg-dark-800 rounded-xl border border-dark-700 hover:border-brand-500 transition group focus:outline-none">
+                        <i class="ph ph-shopping-bag text-2xl group-hover:text-brand-400 transition"></i>
+                        <span id="cartBadge" class="absolute -top-1.5 -right-1.5 inline-flex items-center justify-center px-2 py-0.5 text-xs font-extrabold leading-none text-white bg-gradient-to-r from-brand-500 to-cyan-500 rounded-full hidden shadow-md shadow-brand-500/50">0</span>
                     </button>
                 </div>
             </div>
@@ -131,7 +145,7 @@
             <div class="md:hidden pb-4">
                 <div class="relative w-full">
                     <i class="ph ph-magnifying-glass absolute left-3.5 top-3 text-slate-400 text-lg"></i>
-                    <input type="text" oninput="filterSearch(this.value)" placeholder="Search strings, sticks, cables..." class="w-full bg-dark-800 border border-dark-700 rounded-full pl-10 pr-4 py-2 text-sm text-white placeholder-slate-400 focus:outline-none focus:border-brand-500">
+                    <input type="text" oninput="filterSearch(this.value)" placeholder="Search strings, sticks, cables..." class="w-full bg-dark-850 border border-dark-700 rounded-full pl-10 pr-4 py-2 text-sm text-white placeholder-slate-400 focus:outline-none focus:border-brand-500">
                 </div>
             </div>
         </div>
@@ -139,40 +153,42 @@
 
     <main class="flex-1">
         <!-- Hero Section -->
-        <section class="relative bg-dark-850 border-b border-dark-700 overflow-hidden">
-            <div class="absolute inset-0 z-0 opacity-25">
-                <div class="absolute top-0 left-1/4 w-96 h-96 bg-brand-500 rounded-full mix-blend-screen filter blur-[140px]"></div>
-                <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-amber-600 rounded-full mix-blend-screen filter blur-[140px]"></div>
+        <section class="relative bg-dark-900 border-b border-dark-700 overflow-hidden">
+            <!-- Neon Ambient Blurs -->
+            <div class="absolute inset-0 z-0 opacity-30">
+                <div class="absolute top-0 left-1/4 w-96 h-96 bg-brand-500 rounded-full mix-blend-screen filter blur-[150px]"></div>
+                <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-cyan-500 rounded-full mix-blend-screen filter blur-[150px]"></div>
             </div>
             
             <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 text-center">
-                <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-500/10 border border-brand-500/30 text-brand-400 text-xs font-bold uppercase tracking-wider mb-5">
-                    <i class="ph ph-sparkle"></i> Pro Bulk Strings, Sticks & Gig Essentials
+                <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-950/60 border border-brand-500/40 text-brand-300 text-xs font-bold uppercase tracking-wider mb-5 shadow-sm">
+                    <i class="ph ph-sparkle text-cyan-300"></i> Pro Bulk Strings, Sticks & Emergency Gig Essentials
                 </div>
                 <h1 class="text-4xl sm:text-6xl font-black text-white tracking-tight mb-5 leading-tight">
-                    Never Let A Snapped String <br class="hidden sm:block" /><span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-400 via-amber-400 to-amber-500">Ruin The Gig.</span>
+                    Never Let A Snapped String <br class="hidden sm:block" /><span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-400 via-pink-400 to-cyan-400">Ruin The Gig.</span>
                 </h1>
                 <p class="max-w-2xl text-base sm:text-lg text-slate-300 mx-auto mb-8 leading-relaxed">
                     Bulk musician consumables for working players, bands, and touring rigs. Same-day 15-min pickup across South Wales or rapid UK postal dispatch.
                 </p>
                 <div class="flex flex-wrap justify-center gap-4">
-                    <button onclick="document.getElementById('catalogSection').scrollIntoView({behavior: 'smooth'})" class="bg-brand-500 hover:bg-brand-600 text-white font-bold py-3.5 px-8 rounded-xl transition shadow-lg shadow-brand-500/30 hover:shadow-brand-500/50 flex items-center gap-2 text-base">
+                    <button onclick="document.getElementById('catalogSection').scrollIntoView({behavior: 'smooth'})" class="bg-gradient-to-r from-brand-500 to-brand-600 hover:from-brand-600 hover:to-brand-700 text-white font-bold py-3.5 px-8 rounded-xl transition shadow-lg shadow-brand-500/30 hover:shadow-brand-500/50 flex items-center gap-2 text-base">
                         <span>Browse Catalogue</span>
                         <i class="ph ph-arrow-down font-bold"></i>
                     </button>
-                    <a href="../backend/index.html" class="bg-dark-800 hover:bg-dark-700 text-slate-200 font-semibold py-3.5 px-6 rounded-xl border border-dark-600 transition flex items-center gap-2 text-base">
-                        <i class="ph ph-gear"></i> Manage Store
+                    <a href="../backend/index.html" class="bg-dark-850 hover:bg-dark-800 text-slate-200 font-semibold py-3.5 px-6 rounded-xl border border-dark-700 hover:border-cyan-500/50 transition flex items-center gap-2 text-base">
+                        <i class="ph ph-gear text-cyan-400"></i> Manage Store
                     </a>
                 </div>
             </div>
         </section>
 
-        <!-- Delivery Modes Banner -->
+        <!-- Delivery Modes Banner (Pink & Cyan Dual Cards) -->
         <div class="bg-dark-950 border-b border-dark-700 py-6">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 divide-y md:divide-y-0 md:divide-x divide-dark-700">
+                    <!-- Postal (Pink Glow) -->
                     <div class="flex items-center gap-4 pt-4 md:pt-0">
-                        <div class="p-3 bg-brand-500/10 rounded-2xl border border-brand-500/30 text-brand-400 text-2xl flex-shrink-0">
+                        <div class="p-3 bg-brand-500/10 rounded-2xl border border-brand-500/30 text-brand-400 text-2xl flex-shrink-0 shadow-sm shadow-brand-500/20">
                             <i class="ph ph-truck"></i>
                         </div>
                         <div>
@@ -180,13 +196,14 @@
                             <p class="text-slate-400 text-xs">Royal Mail Tracked 24/48. Flat £3.99 or <strong class="text-brand-400">FREE over £35</strong>.</p>
                         </div>
                     </div>
+                    <!-- Depot (Cyan Glow) -->
                     <div class="flex items-center gap-4 pt-6 md:pt-0 md:pl-8">
-                        <div class="p-3 bg-emerald-500/10 rounded-2xl border border-emerald-500/30 text-emerald-400 text-2xl flex-shrink-0">
+                        <div class="p-3 bg-cyan-500/10 rounded-2xl border border-cyan-500/30 text-cyan-400 text-2xl flex-shrink-0 shadow-sm shadow-cyan-500/20">
                             <i class="ph ph-storefront"></i>
                         </div>
                         <div>
                             <h3 class="text-white font-bold text-base">South Wales Depot Collection</h3>
-                            <p class="text-slate-400 text-xs">Free collection from rehearsal base. Packed in <strong class="text-emerald-400">15 minutes</strong> for urgent gig runs.</p>
+                            <p class="text-slate-400 text-xs">Free collection from rehearsal base. Packed in <strong class="text-cyan-400">15 minutes</strong> for urgent gig runs.</p>
                         </div>
                     </div>
                 </div>
@@ -220,23 +237,23 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col md:flex-row justify-between items-center gap-6 pb-8 border-b border-dark-800">
                 <div class="flex items-center gap-3">
-                    <div class="w-8 h-8 rounded-lg bg-brand-500 flex items-center justify-center text-white text-lg">
+                    <div class="w-8 h-8 rounded-lg bg-gradient-to-tr from-brand-500 to-cyan-400 flex items-center justify-center text-white text-lg">
                         <i class="ph ph-guitar"></i>
                     </div>
-                    <span class="font-display font-bold text-lg text-white">thingama<span class="text-brand-500">gig</span></span>
+                    <span class="font-display font-bold text-lg text-white">thingama<span class="text-brand-400">gig</span></span>
                 </div>
-                <p class="text-slate-500 text-xs text-center md:text-left">
-                    <strong>thingamagig.co.uk</strong> · Operated by TGT ENT LTD · Registered in the United Kingdom · South Wales Depot
+                <p class="text-slate-400 text-xs text-center md:text-left">
+                    <strong class="text-cyan-300">thingamagig.co.uk</strong> · Operated by TGT ENT LTD · Registered in the United Kingdom · South Wales Depot
                 </p>
                 <div class="flex items-center gap-4 text-slate-400 text-xl">
-                    <a href="#" class="hover:text-brand-500 transition"><i class="ph ph-instagram-logo"></i></a>
-                    <a href="#" class="hover:text-brand-500 transition"><i class="ph ph-facebook-logo"></i></a>
-                    <a href="../backend/index.html" class="hover:text-brand-500 transition text-sm font-semibold flex items-center gap-1">
-                        <i class="ph ph-lock-key"></i> Office Admin
+                    <a href="#" class="hover:text-brand-400 transition"><i class="ph ph-instagram-logo"></i></a>
+                    <a href="#" class="hover:text-cyan-400 transition"><i class="ph ph-facebook-logo"></i></a>
+                    <a href="../backend/index.html" class="hover:text-brand-400 transition text-sm font-semibold flex items-center gap-1">
+                        <i class="ph ph-lock-key text-cyan-400"></i> Office Admin
                     </a>
                 </div>
             </div>
-            <div class="pt-6 text-center text-[11px] text-slate-600">
+            <div class="pt-6 text-center text-[11px] text-slate-500">
                 &copy; 2026 Thingamagig (TGT ENT LTD) · thingamagig.co.uk. All rights reserved.
             </div>
         </div>
@@ -249,25 +266,25 @@
     <div id="cartOverlay" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 hidden opacity-0 transition-opacity duration-300"></div>
     
     <!-- Cart Drawer -->
-    <div id="cartSidebar" class="fixed top-0 right-0 h-full w-full sm:w-[440px] bg-dark-850 border-l border-dark-700 shadow-2xl z-50 transform translate-x-full transition-transform duration-300 flex flex-col">
+    <div id="cartSidebar" class="fixed top-0 right-0 h-full w-full sm:w-[440px] bg-dark-900 border-l border-dark-700 shadow-2xl z-50 transform translate-x-full transition-transform duration-300 flex flex-col">
         <!-- Cart Header -->
-        <div class="flex items-center justify-between p-5 border-b border-dark-700 bg-dark-900">
+        <div class="flex items-center justify-between p-5 border-b border-dark-700 bg-dark-950">
             <div class="flex items-center gap-2">
-                <i class="ph ph-shopping-bag text-brand-500 text-2xl"></i>
+                <i class="ph ph-shopping-bag text-brand-400 text-2xl"></i>
                 <h2 class="text-lg font-bold text-white">Gig Basket</h2>
             </div>
-            <button id="closeCartBtn" class="text-slate-400 hover:text-white p-1 rounded-lg hover:bg-dark-800 transition">
+            <button id="closeCartBtn" class="text-slate-400 hover:text-white p-1 rounded-lg hover:bg-dark-850 transition">
                 <i class="ph ph-x text-2xl"></i>
             </button>
         </div>
 
-        <!-- Free Delivery Meter -->
-        <div class="bg-dark-900 px-5 py-3 border-b border-dark-700/60">
+        <!-- Free Delivery Meter (Pink to Cyan Gradient) -->
+        <div class="bg-dark-950 px-5 py-3 border-b border-dark-700/60">
             <div class="flex justify-between items-center text-xs mb-1.5" id="freeShippingText">
                 <span>Add £35.00 for free UK delivery</span>
             </div>
-            <div class="w-full bg-dark-800 h-1.5 rounded-full overflow-hidden">
-                <div id="freeShippingMeter" class="bg-gradient-to-r from-brand-500 to-amber-400 h-full w-0 transition-all duration-300 rounded-full"></div>
+            <div class="w-full bg-dark-850 h-1.5 rounded-full overflow-hidden">
+                <div id="freeShippingMeter" class="bg-gradient-to-r from-brand-500 via-pink-400 to-cyan-400 h-full w-0 transition-all duration-300 rounded-full"></div>
             </div>
         </div>
 
@@ -282,13 +299,13 @@
         </div>
 
         <!-- Cart Footer -->
-        <div id="cartFooter" class="border-t border-dark-700 bg-dark-900 p-5 opacity-50 pointer-events-none transition-opacity">
+        <div id="cartFooter" class="border-t border-dark-700 bg-dark-950 p-5 opacity-50 pointer-events-none transition-opacity">
             
             <!-- Fulfillment Radio Options -->
             <div class="mb-4 space-y-2">
                 <p class="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Choose Fulfillment</p>
                 
-                <label class="flex items-center justify-between p-3 border border-brand-500/60 bg-brand-950/30 rounded-xl cursor-pointer transition">
+                <label class="flex items-center justify-between p-3 border border-brand-500/60 bg-brand-950/40 rounded-xl cursor-pointer transition">
                     <div class="flex items-center gap-3">
                         <input type="radio" name="deliveryOption" value="post" checked class="accent-brand-500 w-4 h-4 cursor-pointer">
                         <div>
@@ -299,15 +316,15 @@
                     <span class="text-xs font-bold text-white">£3.99</span>
                 </label>
 
-                <label class="flex items-center justify-between p-3 border border-dark-700 bg-dark-800 rounded-xl cursor-pointer transition">
+                <label class="flex items-center justify-between p-3 border border-dark-700 bg-dark-850 rounded-xl cursor-pointer transition">
                     <div class="flex items-center gap-3">
-                        <input type="radio" name="deliveryOption" value="collect" class="accent-brand-500 w-4 h-4 cursor-pointer">
+                        <input type="radio" name="deliveryOption" value="collect" class="accent-cyan-500 w-4 h-4 cursor-pointer">
                         <div>
                             <span class="block text-white text-xs font-bold">South Wales Depot Collection</span>
-                            <span class="block text-[10px] text-slate-400">Ready in 15 mins for rehearsal/gig</span>
+                            <span class="block text-[10px] text-cyan-300">Ready in 15 mins for rehearsal/gig</span>
                         </div>
                     </div>
-                    <span class="text-xs font-bold text-emerald-400">FREE</span>
+                    <span class="text-xs font-bold text-cyan-400">FREE</span>
                 </label>
             </div>
 
@@ -323,12 +340,12 @@
                 </div>
                 <div class="flex justify-between text-white font-extrabold text-base pt-2 border-t border-dark-700">
                     <span>Total</span>
-                    <span id="totalDisplay" class="text-brand-500 text-lg">£0.00</span>
+                    <span id="totalDisplay" class="text-transparent bg-clip-text bg-gradient-to-r from-brand-400 to-cyan-400 text-lg font-black">£0.00</span>
                 </div>
             </div>
 
             <!-- Checkout CTA Button -->
-            <button onclick="openCheckoutModal()" class="w-full bg-brand-500 hover:bg-brand-600 text-white font-bold py-3 rounded-xl flex justify-center items-center gap-2 transition shadow-lg shadow-brand-500/30 text-sm">
+            <button onclick="openCheckoutModal()" class="w-full bg-gradient-to-r from-brand-500 to-cyan-500 hover:from-brand-600 hover:to-cyan-600 text-white font-bold py-3 rounded-xl flex justify-center items-center gap-2 transition shadow-lg shadow-brand-500/30 text-sm">
                 <span>Proceed to Checkout</span>
                 <i class="ph ph-arrow-right font-bold"></i>
             </button>

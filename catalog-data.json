@@ -13,7 +13,7 @@
     "description": "The world's standard electric guitar string gauge. Custom nickel wound for balanced tone and longevity.",
     "badge": "Best Seller",
     "imageText": "EB 10-46",
-    "color": "1E293B/f97316"
+    "color": "0B0F1D/ec4899"
   },
   {
     "id": "SKU-STR-EB-0942",
@@ -29,7 +29,7 @@
     "description": "Ultra light gauge for effortless bending and rapid soloing. Standard bright nickel tone.",
     "badge": "Popular",
     "imageText": "EB 9-42",
-    "color": "1E293B/f97316"
+    "color": "0B0F1D/06b6d4"
   },
   {
     "id": "SKU-STR-DAD-1253",
@@ -45,7 +45,7 @@
     "description": "Rich, warm acoustic tone with corrosion resistant phosphor bronze winding for working acoustics.",
     "badge": "Acoustic Top",
     "imageText": "DAD 12-53",
-    "color": "151C2C/f97316"
+    "color": "0B0F1D/ec4899"
   },
   {
     "id": "SKU-STR-ROT-45105",
@@ -61,7 +61,7 @@
     "description": "Legendary British stainless steel roundwound bass strings. High punch and cutting presence.",
     "badge": "Pro Bass",
     "imageText": "BASS 45-105",
-    "color": "1E293B/f97316"
+    "color": "0B0F1D/06b6d4"
   },
   {
     "id": "SKU-STK-VIC-5A",
@@ -77,7 +77,7 @@
     "description": "The world's most popular stick size. Premium select USA hickory with wood tear-drop tip.",
     "badge": "Drummer Essential",
     "imageText": "VIC 5A",
-    "color": "151C2C/f97316"
+    "color": "0B0F1D/ec4899"
   },
   {
     "id": "SKU-STK-VIC-5B",
@@ -93,7 +93,7 @@
     "description": "Heavier shoulder and shaft for rock and heavy gigging power.",
     "badge": "Power Hitters",
     "imageText": "VIC 5B",
-    "color": "151C2C/f97316"
+    "color": "0B0F1D/06b6d4"
   },
   {
     "id": "SKU-HED-REM-14CS",
@@ -109,7 +109,7 @@
     "description": "Industry standard 10-mil single ply coated batter head for open, crisp snare response.",
     "badge": "Live Pro",
     "imageText": "REMO 14\"",
-    "color": "1E293B/f97316"
+    "color": "0B0F1D/ec4899"
   },
   {
     "id": "SKU-CAB-TMG-10FT",
@@ -125,7 +125,7 @@
     "description": "Heavy braided shield with gold contact plugs and heat-shrink relief. Zero stage crackle.",
     "badge": "Tour Tough",
     "imageText": "10ft CABLE",
-    "color": "151C2C/f97316"
+    "color": "0B0F1D/06b6d4"
   },
   {
     "id": "SKU-CAB-TMG-20XLR",
@@ -141,7 +141,7 @@
     "description": "Oxygen-free copper conductor with heavy duty chuck-type strain relief.",
     "badge": "Vocal & DI",
     "imageText": "20ft XLR",
-    "color": "151C2C/f97316"
+    "color": "0B0F1D/ec4899"
   },
   {
     "id": "SKU-EMG-GAFF-50M",
@@ -157,7 +157,7 @@
     "description": "High residue-free adhesion for cable dressing, stage marking and emergency gear fixes.",
     "badge": "Gig Saver",
     "imageText": "GAFF 50M",
-    "color": "1E293B/f97316"
+    "color": "0B0F1D/06b6d4"
   },
   {
     "id": "SKU-EMG-9VBAT-6PK",
@@ -173,7 +173,7 @@
     "description": "Long-life alkaline cells for active preamps, wireless beltpacks, and acoustic pickups.",
     "badge": "Must Have",
     "imageText": "9V BATTERY",
-    "color": "151C2C/f97316"
+    "color": "0B0F1D/ec4899"
   },
   {
     "id": "SKU-EMG-TUN-CLIP",
@@ -189,6 +189,6 @@
     "description": "High-contrast color LCD, vibration-based chromatic tuning for noisy backstage environments.",
     "badge": "Tuning",
     "imageText": "TUNER",
-    "color": "151C2C/f97316"
+    "color": "0B0F1D/06b6d4"
   }
 ]
