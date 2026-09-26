@@ -67,16 +67,13 @@
         
         .glass-panel {
             background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.07);
-            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(14px);
         }
         .glass-panel-elevated {
-            background: rgba(19, 24, 41, 0.85);
-            border: 1px solid rgba(255, 255, 255, 0.09);
-            backdrop-filter: blur(16px);
-        }
-        .glass-panel:hover {
-            border-color: rgba(232, 71, 95, 0.4);
+            background: rgba(19, 24, 41, 0.9);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(20px);
         }
 
         .cart-scroll::-webkit-scrollbar {
@@ -102,28 +99,30 @@
 </head>
 <body class="bg-navy text-[#F0F0F5] antialiased overflow-x-hidden selection:bg-coral selection:text-white min-h-screen flex flex-col">
 
-    <!-- Top Announcement Bar (Coral & Indigo Aurora Gradient) -->
-    <div class="bg-gradient-to-r from-coral via-[#9333ea] to-indigo text-white text-xs font-bold py-2 px-4 text-center tracking-wide flex justify-center items-center gap-2 shadow-lg">
-        <i class="ph ph-lightning text-gold text-base"></i>
-        <span>Thingamagig South Wales Rehearsal & Gig Depot: 15-Minute Rapid Collection Available Tonight!</span>
+    <!-- Emergency Live Depot Countdown Ribbon -->
+    <div class="bg-gradient-to-r from-coral via-[#7e22ce] to-indigo text-white text-xs font-bold py-2 px-4 text-center tracking-wide flex justify-center items-center gap-2 shadow-xl sticky top-0 z-50">
+        <span class="inline-block w-2 h-2 rounded-full bg-gold animate-ping"></span>
+        <span class="font-extrabold">South Wales Gig Depot:</span>
+        <span id="depotTimer" class="font-mono font-black text-gold bg-black/20 px-2 py-0.5 rounded">Calculating cutoff...</span>
+        <span class="hidden sm:inline text-white/80">· 15-Minute Emergency Collection</span>
     </div>
 
-    <!-- Navigation Bar -->
-    <nav class="sticky w-full z-40 top-0 border-b border-navy-border/60 bg-navy/95 backdrop-blur-md">
+    <!-- Main Navigation Bar -->
+    <nav class="sticky w-full z-40 top-8 border-b border-navy-border/70 bg-navy/95 backdrop-blur-md">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
-                <!-- Logo with Original Asset Icon -->
+                <!-- Brand Logo & Domain -->
                 <div class="flex-shrink-0 flex items-center gap-3 cursor-pointer" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
-                    <img src="./assets/icon.png" alt="Thingamagig Logo" class="w-11 h-11 rounded-2xl shadow-lg shadow-coral/20 border border-white/10 object-cover">
+                    <img src="./assets/icon.png" alt="Thingamagig Icon" class="w-11 h-11 rounded-2xl shadow-xl shadow-coral/25 border border-white/10 object-cover">
                     <div>
                         <span class="font-extrabold text-2xl tracking-tight text-white block leading-tight">
                             thingama<span class="text-transparent bg-clip-text bg-gradient-to-r from-coral via-coral-glow to-indigo-light">gig</span>
                         </span>
-                        <span class="text-[10px] text-[#8B8FA3] font-semibold tracking-wider uppercase block">Musician Consumables &bull; thingamagig.co.uk</span>
+                        <span class="text-[10px] text-indigo-light font-semibold tracking-wider uppercase block">Musician Consumables &bull; thingamagig.co.uk</span>
                     </div>
                 </div>
                 
-                <!-- Search Bar (Desktop) -->
+                <!-- Search Input Bar (Desktop) -->
                 <div class="hidden md:flex flex-1 max-w-md mx-8">
                     <div class="relative w-full">
                         <i class="ph ph-magnifying-glass absolute left-3.5 top-3 text-[#8B8FA3] text-lg"></i>
@@ -131,21 +130,21 @@
                     </div>
                 </div>
 
-                <!-- Right Actions -->
+                <!-- Right Action Icons -->
                 <div class="flex items-center gap-4">
-                    <a href="../backend/index.html" class="hidden sm:flex items-center gap-1.5 text-xs font-semibold text-[#8B8FA3] hover:text-white bg-navy-light hover:bg-navy-mid px-3 py-2 rounded-xl border border-navy-border transition">
+                    <a href="../backend/index.html" class="hidden sm:flex items-center gap-1.5 text-xs font-semibold text-[#8B8FA3] hover:text-white bg-navy-light hover:bg-navy-mid px-3.5 py-2.5 rounded-xl border border-navy-border transition">
                         <i class="ph ph-sliders text-coral"></i> Office Portal
                     </a>
 
-                    <!-- Cart Button -->
+                    <!-- Cart Drawer Trigger -->
                     <button id="cartBtn" class="relative p-2.5 text-[#F0F0F5] hover:text-white bg-navy-light hover:bg-navy-mid rounded-xl border border-navy-border hover:border-coral transition group focus:outline-none">
                         <i class="ph ph-shopping-bag text-2xl group-hover:text-coral transition"></i>
-                        <span id="cartBadge" class="absolute -top-1.5 -right-1.5 inline-flex items-center justify-center px-2 py-0.5 text-xs font-extrabold leading-none text-white bg-gradient-to-r from-coral to-indigo rounded-full hidden shadow-md shadow-coral/50">0</span>
+                        <span id="cartBadge" class="absolute -top-1.5 -right-1.5 inline-flex items-center justify-center px-2 py-0.5 text-xs font-black leading-none text-white bg-gradient-to-r from-coral to-indigo rounded-full hidden shadow-md shadow-coral/50">0</span>
                     </button>
                 </div>
             </div>
 
-            <!-- Search Bar (Mobile) -->
+            <!-- Mobile Search Bar -->
             <div class="md:hidden pb-4">
                 <div class="relative w-full">
                     <i class="ph ph-magnifying-glass absolute left-3.5 top-3 text-[#8B8FA3] text-lg"></i>
@@ -156,58 +155,70 @@
     </nav>
 
     <main class="flex-1">
-        <!-- Hero Section (Aurora Hybrid) -->
+        <!-- Hero Section -->
         <section class="relative bg-navy-light border-b border-navy-border overflow-hidden">
-            <!-- Aurora Glows (Coral & Indigo) -->
+            <!-- Aurora Blurs -->
             <div class="absolute inset-0 z-0 opacity-25">
-                <div class="absolute top-0 left-1/4 w-96 h-96 bg-coral rounded-full mix-blend-screen filter blur-[150px]"></div>
-                <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-indigo rounded-full mix-blend-screen filter blur-[150px]"></div>
+                <div class="absolute top-0 left-1/4 w-96 h-96 bg-coral rounded-full mix-blend-screen filter blur-[160px]"></div>
+                <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-indigo rounded-full mix-blend-screen filter blur-[160px]"></div>
             </div>
             
             <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24 text-center">
-                <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-coral/10 border border-coral/30 text-coral-glow text-xs font-bold uppercase tracking-wider mb-5 shadow-sm">
-                    <i class="ph ph-sparkle text-indigo-light"></i> Pro Bulk Strings, Sticks & Gig Essentials
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-coral/10 border border-coral/30 text-coral-glow text-xs font-extrabold uppercase tracking-wider mb-5 shadow-sm">
+                    <i class="ph ph-sparkle text-indigo-light"></i> Genuine Distributor Stock &bull; South Wales Depot
                 </div>
-                <h1 class="text-4xl sm:text-6xl font-extrabold text-white tracking-tight mb-5 leading-tight">
+                <h1 class="text-4xl sm:text-6xl font-black text-white tracking-tight mb-5 leading-tight">
                     Never Let A Snapped String <br class="hidden sm:block" /><span class="text-transparent bg-clip-text bg-gradient-to-r from-coral via-coral-glow to-indigo-light">Ruin The Gig.</span>
                 </h1>
                 <p class="max-w-2xl text-base sm:text-lg text-[#8B8FA3] mx-auto mb-8 leading-relaxed">
                     Bulk musician consumables for working players, bands, and touring rigs. Same-day 15-min pickup across South Wales or rapid UK postal dispatch.
                 </p>
                 <div class="flex flex-wrap justify-center gap-4">
-                    <button onclick="document.getElementById('catalogSection').scrollIntoView({behavior: 'smooth'})" class="bg-gradient-to-r from-coral to-coral-dim hover:from-coral-glow hover:to-coral text-white font-bold py-3.5 px-8 rounded-xl transition shadow-lg shadow-coral/30 hover:shadow-coral/50 flex items-center gap-2 text-base">
-                        <span>Browse Catalogue</span>
+                    <button onclick="document.getElementById('catalogSection').scrollIntoView({behavior: 'smooth'})" class="bg-gradient-to-r from-coral to-coral-dim hover:from-coral-glow hover:to-coral text-white font-extrabold py-3.5 px-8 rounded-xl transition shadow-xl shadow-coral/30 hover:shadow-coral/50 flex items-center gap-2 text-base">
+                        <span>Browse Consumables</span>
                         <i class="ph ph-arrow-down font-bold"></i>
                     </button>
-                    <a href="../backend/index.html" class="glass-panel text-[#F0F0F5] hover:text-white font-semibold py-3.5 px-6 rounded-xl hover:border-indigo/50 transition flex items-center gap-2 text-base">
-                        <i class="ph ph-gear text-indigo-light"></i> Manage Store
-                    </a>
+                    <button onclick="setCategory('Gig Bundles'); document.getElementById('catalogSection').scrollIntoView({behavior: 'smooth'})" class="glass-panel text-[#F0F0F5] hover:text-white font-bold py-3.5 px-6 rounded-xl hover:border-coral/50 transition flex items-center gap-2 text-base">
+                        <i class="ph ph-fire text-coral"></i> View Stage Bundles
+                    </button>
                 </div>
             </div>
         </section>
 
-        <!-- Delivery Modes Banner (Glass Hybrid with Coral & Mint Glows) -->
-        <div class="bg-navy border-b border-navy-border/60 py-6">
+        <!-- Trust & Dual Fulfillment Matrix -->
+        <div class="bg-navy border-b border-navy-border py-8">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 divide-y md:divide-y-0 md:divide-x divide-navy-border">
-                    <!-- Postal (Coral Glow) -->
-                    <div class="flex items-center gap-4 pt-4 md:pt-0">
-                        <div class="p-3 bg-coral/10 rounded-2xl border border-coral/30 text-coral-glow text-2xl flex-shrink-0 shadow-sm shadow-coral/20">
-                            <i class="ph ph-truck"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-white font-bold text-base">UK Postal Dispatch</h3>
-                            <p class="text-[#8B8FA3] text-xs">Royal Mail Tracked 24/48. Flat £3.99 or <strong class="text-coral-glow">FREE over £35</strong>.</p>
-                        </div>
-                    </div>
-                    <!-- Depot (Mint Glow) -->
-                    <div class="flex items-center gap-4 pt-6 md:pt-0 md:pl-8">
-                        <div class="p-3 bg-mint/10 rounded-2xl border border-mint/30 text-mint text-2xl flex-shrink-0 shadow-sm shadow-mint/20">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- Feature 1: South Wales Depot -->
+                    <div class="glass-panel rounded-2xl p-5 flex items-start gap-4 hover:border-mint/50 transition shadow-sm">
+                        <div class="p-3 bg-mint/10 text-mint rounded-2xl border border-mint/20 text-2xl flex-shrink-0">
                             <i class="ph ph-storefront"></i>
                         </div>
                         <div>
-                            <h3 class="text-white font-bold text-base">South Wales Depot Collection</h3>
-                            <p class="text-[#8B8FA3] text-xs">Free collection from rehearsal base. Packed in <strong class="text-mint">15 minutes</strong> for urgent gig runs.</p>
+                            <h3 class="text-white font-bold text-sm">South Wales 15-Min Collection</h3>
+                            <p class="text-[#8B8FA3] text-xs mt-0.5">Urgent emergency pre-gig pickup from our local South Wales rehearsal base.</p>
+                        </div>
+                    </div>
+
+                    <!-- Feature 2: UK Postal Tracked -->
+                    <div class="glass-panel rounded-2xl p-5 flex items-start gap-4 hover:border-coral/50 transition shadow-sm">
+                        <div class="p-3 bg-coral/10 text-coral-glow rounded-2xl border border-coral/20 text-2xl flex-shrink-0">
+                            <i class="ph ph-truck"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-white font-bold text-sm">Royal Mail Tracked 24/48</h3>
+                            <p class="text-[#8B8FA3] text-xs mt-0.5">Flat £3.99 dispatch or <strong class="text-coral-glow">FREE UK Shipping over £35</strong>.</p>
+                        </div>
+                    </div>
+
+                    <!-- Feature 3: Genuine Distributor Supply -->
+                    <div class="glass-panel rounded-2xl p-5 flex items-start gap-4 hover:border-indigo/50 transition shadow-sm">
+                        <div class="p-3 bg-indigo/10 text-indigo-light rounded-2xl border border-indigo/20 text-2xl flex-shrink-0">
+                            <i class="ph ph-shield-check"></i>
+                        </div>
+                        <div>
+                            <h3 class="text-white font-bold text-sm">100% Genuine UK Supply</h3>
+                            <p class="text-[#8B8FA3] text-xs mt-0.5">Direct B2B trade lines from Strings & Things, JHS, Barnes & Mullins.</p>
                         </div>
                     </div>
                 </div>
@@ -216,16 +227,29 @@
 
         <!-- Main Product Section -->
         <section id="catalogSection" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-            <!-- Category Tabs Header -->
-            <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
+            <!-- Filter Bar Header -->
+            <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 mb-8">
                 <div>
-                    <h2 class="text-2xl sm:text-3xl font-extrabold text-white">Musician Supplies</h2>
-                    <p class="text-[#8B8FA3] text-xs sm:text-sm">Consumables in stock for immediate dispatch or collection.</p>
+                    <h2 class="text-2xl sm:text-3xl font-black text-white">Musician Consumables</h2>
+                    <p class="text-[#8B8FA3] text-xs sm:text-sm">In stock for instant dispatch or 15-min South Wales collection.</p>
                 </div>
                 
-                <!-- Category Filter Pills -->
-                <div id="categoryTabs" class="flex gap-2 overflow-x-auto pb-2 scrollbar-none">
-                    <!-- Populated dynamically via app.js -->
+                <div class="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+                    <!-- Sort Dropdown -->
+                    <div class="flex items-center gap-2 text-xs">
+                        <span class="text-[#8B8FA3] font-semibold whitespace-nowrap">Sort By:</span>
+                        <select id="sortSelect" class="bg-navy-light border border-navy-border rounded-xl px-3 py-2 text-white focus:outline-none focus:border-coral text-xs">
+                            <option value="trending">🔥 Trending Essentials</option>
+                            <option value="savings">💰 Biggest Savings</option>
+                            <option value="price-low">£ Price: Low to High</option>
+                            <option value="price-high">£ Price: High to Low</option>
+                        </select>
+                    </div>
+
+                    <!-- Category Filter Pills -->
+                    <div id="categoryTabs" class="flex gap-2 overflow-x-auto pb-1 scrollbar-none">
+                        <!-- Populated dynamically via app.js -->
+                    </div>
                 </div>
             </div>
 
@@ -241,17 +265,17 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col md:flex-row justify-between items-center gap-6 pb-8 border-b border-navy-border/60">
                 <div class="flex items-center gap-3">
-                    <img src="./assets/icon.png" alt="Thingamagig Logo" class="w-8 h-8 rounded-xl object-cover">
-                    <span class="font-extrabold text-lg text-white">thingama<span class="text-coral">gig</span></span>
+                    <img src="./assets/icon.png" alt="Thingamagig Logo" class="w-8 h-8 rounded-xl object-cover shadow-md">
+                    <span class="font-black text-lg text-white">thingama<span class="text-coral">gig</span></span>
                 </div>
                 <p class="text-[#8B8FA3] text-xs text-center md:text-left">
-                    <strong class="text-white">thingamagig.co.uk</strong> · Operated by TGT ENT LTD · Registered in the United Kingdom · South Wales Depot
+                    <strong class="text-white">thingamagig.co.uk</strong> · Operated under TGT ENT LTD · Registered in the United Kingdom · South Wales Depot
                 </p>
                 <div class="flex items-center gap-4 text-[#8B8FA3] text-xl">
                     <a href="#" class="hover:text-coral transition"><i class="ph ph-instagram-logo"></i></a>
                     <a href="#" class="hover:text-indigo-light transition"><i class="ph ph-facebook-logo"></i></a>
-                    <a href="../backend/index.html" class="hover:text-coral transition text-sm font-semibold flex items-center gap-1">
-                        <i class="ph ph-lock-key text-indigo-light"></i> Office Admin
+                    <a href="../backend/index.html" class="hover:text-coral transition text-sm font-bold flex items-center gap-1">
+                        <i class="ph ph-lock-key text-indigo-light"></i> Office Portal
                     </a>
                 </div>
             </div>
@@ -265,7 +289,7 @@
     <div id="toastContainer" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 flex flex-col gap-2 pointer-events-none w-full max-w-sm px-4"></div>
 
     <!-- Cart Overlay -->
-    <div id="cartOverlay" class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 hidden opacity-0 transition-opacity duration-300"></div>
+    <div id="cartOverlay" class="fixed inset-0 bg-black/75 backdrop-blur-sm z-50 hidden opacity-0 transition-opacity duration-300"></div>
     
     <!-- Cart Drawer -->
     <div id="cartSidebar" class="fixed top-0 right-0 h-full w-full sm:w-[440px] bg-navy-mid border-l border-navy-border shadow-2xl z-50 transform translate-x-full transition-transform duration-300 flex flex-col">
@@ -273,19 +297,19 @@
         <div class="flex items-center justify-between p-5 border-b border-navy-border bg-navy">
             <div class="flex items-center gap-2">
                 <i class="ph ph-shopping-bag text-coral text-2xl"></i>
-                <h2 class="text-lg font-bold text-white">Gig Basket</h2>
+                <h2 class="text-lg font-black text-white">Gig Bag & Basket</h2>
             </div>
             <button id="closeCartBtn" class="text-[#8B8FA3] hover:text-white p-1 rounded-lg hover:bg-navy-light transition">
                 <i class="ph ph-x text-2xl"></i>
             </button>
         </div>
 
-        <!-- Free Delivery Meter (Coral to Indigo Gradient) -->
+        <!-- Free Delivery Meter -->
         <div class="bg-navy px-5 py-3 border-b border-navy-border/60">
             <div class="flex justify-between items-center text-xs mb-1.5" id="freeShippingText">
                 <span>Add £35.00 for free UK delivery</span>
             </div>
-            <div class="w-full bg-navy-light h-1.5 rounded-full overflow-hidden">
+            <div class="w-full bg-navy-light h-2 rounded-full overflow-hidden">
                 <div id="freeShippingMeter" class="bg-gradient-to-r from-coral via-coral-glow to-indigo-light h-full w-0 transition-all duration-300 rounded-full"></div>
             </div>
         </div>
@@ -294,8 +318,8 @@
         <div id="cartItemsContainer" class="flex-1 overflow-y-auto p-5 cart-scroll space-y-3">
             <div id="emptyCartMessage" class="flex flex-col items-center justify-center h-full text-[#8B8FA3] gap-3">
                 <i class="ph ph-package text-5xl opacity-20"></i>
-                <p class="text-sm font-medium">Your gig bag is currently empty.</p>
-                <button onclick="toggleCart()" class="text-xs text-coral-glow hover:underline">Start shopping essentials</button>
+                <p class="text-sm font-bold">Your gig bag is empty.</p>
+                <button onclick="toggleCart()" class="text-xs text-coral-glow font-bold hover:underline">Browse consumables & bundles</button>
             </div>
             <div id="cartList" class="hidden flex-col gap-3"></div>
         </div>
@@ -307,23 +331,23 @@
             <div class="mb-4 space-y-2">
                 <p class="text-[11px] font-bold text-[#8B8FA3] uppercase tracking-wider">Choose Fulfillment</p>
                 
-                <label class="flex items-center justify-between p-3 border border-coral/60 bg-coral/10 rounded-xl cursor-pointer transition">
+                <label class="flex items-center justify-between p-3.5 border border-coral/60 bg-coral/10 rounded-xl cursor-pointer transition shadow-sm shadow-coral/10">
                     <div class="flex items-center gap-3">
                         <input type="radio" name="deliveryOption" value="post" checked class="accent-coral w-4 h-4 cursor-pointer">
                         <div>
-                            <span class="block text-white text-xs font-bold">UK Postal Delivery</span>
+                            <span class="block text-white text-xs font-bold">UK Postal Dispatch</span>
                             <span class="block text-[10px] text-[#8B8FA3]">Royal Mail 24/48 (Free over £35)</span>
                         </div>
                     </div>
                     <span class="text-xs font-bold text-white">£3.99</span>
                 </label>
 
-                <label class="flex items-center justify-between p-3 border border-navy-border bg-navy-light rounded-xl cursor-pointer transition">
+                <label class="flex items-center justify-between p-3.5 border border-navy-border bg-navy-light rounded-xl cursor-pointer transition opacity-80 hover:opacity-100">
                     <div class="flex items-center gap-3">
                         <input type="radio" name="deliveryOption" value="collect" class="accent-mint w-4 h-4 cursor-pointer">
                         <div>
                             <span class="block text-white text-xs font-bold">South Wales Depot Collection</span>
-                            <span class="block text-[10px] text-mint">Ready in 15 mins for rehearsal/gig</span>
+                            <span class="block text-[10px] text-mint">Ready in 15 mins for tonight's show</span>
                         </div>
                     </div>
                     <span class="text-xs font-bold text-mint">FREE</span>
@@ -334,20 +358,20 @@
             <div class="space-y-1.5 mb-4 text-xs">
                 <div class="flex justify-between text-[#8B8FA3]">
                     <span>Items Subtotal</span>
-                    <span id="subtotalDisplay" class="font-semibold text-white">£0.00</span>
+                    <span id="subtotalDisplay" class="font-bold text-white">£0.00</span>
                 </div>
                 <div class="flex justify-between text-[#8B8FA3]">
                     <span>Fulfillment</span>
-                    <span id="deliveryDisplay" class="font-semibold text-white">£3.99</span>
+                    <span id="deliveryDisplay" class="font-bold text-white">£3.99</span>
                 </div>
-                <div class="flex justify-between text-white font-extrabold text-base pt-2 border-t border-navy-border">
+                <div class="flex justify-between text-white font-black text-base pt-2 border-t border-navy-border">
                     <span>Total</span>
-                    <span id="totalDisplay" class="text-transparent bg-clip-text bg-gradient-to-r from-coral via-coral-glow to-indigo-light text-lg font-black">£0.00</span>
+                    <span id="totalDisplay" class="text-transparent bg-clip-text bg-gradient-to-r from-coral via-coral-glow to-indigo-light text-xl font-black">£0.00</span>
                 </div>
             </div>
 
             <!-- Checkout CTA Button -->
-            <button onclick="openCheckoutModal()" class="w-full bg-gradient-to-r from-coral to-indigo hover:from-coral-glow hover:to-indigo-glow text-white font-bold py-3 rounded-xl flex justify-center items-center gap-2 transition shadow-lg shadow-coral/30 text-sm">
+            <button onclick="openCheckoutModal()" class="w-full bg-gradient-to-r from-coral to-indigo hover:from-coral-glow hover:to-indigo-glow text-white font-black py-3.5 rounded-2xl flex justify-center items-center gap-2 transition shadow-xl shadow-coral/30 text-sm">
                 <span>Proceed to Checkout</span>
                 <i class="ph ph-arrow-right font-bold"></i>
             </button>

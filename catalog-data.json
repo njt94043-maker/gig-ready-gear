@@ -1,51 +1,113 @@
 [
   {
+    "id": "SKU-BND-GIG-ELEC",
+    "sku": "BND-GIG-ELEC",
+    "name": "The Guitarist Emergency Gig Pack (Strings + 10ft Lead + Gaff + 9V)",
+    "category": "Gig Bundles",
+    "brand": "Thingamagig Pro",
+    "wholesaleCost": 12.80,
+    "retailPrice": 29.99,
+    "originalPrice": 36.47,
+    "stock": 15,
+    "reorderThreshold": 5,
+    "supplier": "Thingamagig Assembly",
+    "description": "The ultimate live stage emergency pack: 1x Ernie Ball 10-46 strings, 1x 10ft Pro Tour Lead, 1x Matte Black Gaff Tape, and 1x 9V Alkaline Battery. Save £6.48.",
+    "badge": "Bundle & Save",
+    "imageText": "GIG PACK",
+    "color": "131829/E8475F",
+    "specs": {
+      "Contents": "10-46 Strings, 10ft Lead, 50m Gaff, 9V Bat",
+      "Savings": "18% off single retail prices",
+      "Fulfillment": "Depot Ready or 24hr Tracked"
+    }
+  },
+  {
+    "id": "SKU-BND-DRUM-SURV",
+    "sku": "BND-DRUM-SURV",
+    "name": "Drummer Stage Survival Pack (5A Sticks + 14\" Snare Head + Gaff)",
+    "category": "Gig Bundles",
+    "brand": "Thingamagig Pro",
+    "wholesaleCost": 16.80,
+    "retailPrice": 32.99,
+    "originalPrice": 38.48,
+    "stock": 10,
+    "reorderThreshold": 4,
+    "supplier": "Thingamagig Assembly",
+    "description": "Everything needed to survive a high-energy live show: 1x pair Vic Firth 5A Sticks, 1x Remo Coated Ambassador 14\" Snare Head, 1x 50m Tour Gaff Tape.",
+    "badge": "Drummer Essential",
+    "imageText": "DRUM PACK",
+    "color": "131829/4A3AFF",
+    "specs": {
+      "Contents": "Vic Firth 5A, Remo 14\" Head, Gaff Tape",
+      "Savings": "Save £5.49 vs individual items",
+      "Fulfillment": "15-min South Wales Depot Pickup"
+    }
+  },
+  {
     "id": "SKU-STR-EB-1046",
     "sku": "STR-EB-1046",
-    "name": "Ernie Ball Regular Slinky (10-46)",
+    "name": "Ernie Ball Regular Slinky Electric (10-46)",
     "category": "Electric Strings",
     "brand": "Ernie Ball",
     "wholesaleCost": 3.10,
     "retailPrice": 6.50,
+    "originalPrice": 7.99,
     "stock": 24,
     "reorderThreshold": 8,
     "supplier": "Strings & Things Ltd",
-    "description": "The world's standard electric guitar string gauge. Custom nickel wound for balanced tone and longevity.",
+    "description": "The world's standard electric guitar string gauge. Custom nickel wound over tin-plated hex core for signature balanced bite.",
     "badge": "Best Seller",
     "imageText": "EB 10-46",
-    "color": "0B0F1D/ec4899"
+    "color": "131829/E8475F",
+    "specs": {
+      "Gauges": ".010, .013, .017, .026, .036, .046",
+      "Core": "Tin-plated high-carbon steel hex",
+      "Made In": "Coachella Valley, USA"
+    }
   },
   {
     "id": "SKU-STR-EB-0942",
     "sku": "STR-EB-0942",
-    "name": "Ernie Ball Super Slinky (9-42)",
+    "name": "Ernie Ball Super Slinky Electric (9-42)",
     "category": "Electric Strings",
     "brand": "Ernie Ball",
     "wholesaleCost": 3.10,
     "retailPrice": 6.50,
+    "originalPrice": 7.99,
     "stock": 18,
     "reorderThreshold": 6,
     "supplier": "Strings & Things Ltd",
-    "description": "Ultra light gauge for effortless bending and rapid soloing. Standard bright nickel tone.",
+    "description": "Ultra light gauge for effortless string bends, expressive vibrato, and rapid soloing. Standard bright nickel tone.",
     "badge": "Popular",
     "imageText": "EB 9-42",
-    "color": "0B0F1D/06b6d4"
+    "color": "131829/4A3AFF",
+    "specs": {
+      "Gauges": ".009, .011, .016, .024w, .032, .042",
+      "Tension": "Super Light",
+      "Made In": "USA"
+    }
   },
   {
     "id": "SKU-STR-DAD-1253",
     "sku": "STR-DAD-1253",
-    "name": "D'Addario EJ16 Phosphor Bronze (12-53)",
+    "name": "D'Addario EJ16 Phosphor Bronze Acoustic (12-53)",
     "category": "Acoustic Strings",
     "brand": "D'Addario",
     "wholesaleCost": 4.20,
     "retailPrice": 8.99,
+    "originalPrice": 10.99,
     "stock": 16,
     "reorderThreshold": 5,
     "supplier": "Strings & Things Ltd",
-    "description": "Rich, warm acoustic tone with corrosion resistant phosphor bronze winding for working acoustics.",
+    "description": "Rich, warm acoustic tone with corrosion-resistant phosphor bronze winding for working singer-songwriters and gigging acoustics.",
     "badge": "Acoustic Top",
     "imageText": "DAD 12-53",
-    "color": "0B0F1D/ec4899"
+    "color": "131829/E8475F",
+    "specs": {
+      "Gauges": ".012, .016, .024w, .032w, .042w, .053w",
+      "Tone": "Warm, Bright, & Balanced",
+      "Origin": "Farmingdale, NY"
+    }
   },
   {
     "id": "SKU-STR-ROT-45105",
@@ -55,140 +117,194 @@
     "brand": "Rotosound",
     "wholesaleCost": 11.50,
     "retailPrice": 24.99,
+    "originalPrice": 28.50,
     "stock": 8,
     "reorderThreshold": 3,
     "supplier": "Barnes & Mullins",
-    "description": "Legendary British stainless steel roundwound bass strings. High punch and cutting presence.",
+    "description": "Legendary British stainless steel roundwound bass strings. High punch, growl, and cutting presence used by rock legends.",
     "badge": "Pro Bass",
     "imageText": "BASS 45-105",
-    "color": "0B0F1D/06b6d4"
+    "color": "131829/4A3AFF",
+    "specs": {
+      "Gauges": "45, 65, 80, 105",
+      "Scale": "Long Scale (32-34\")",
+      "Made In": "Sevenoaks, Kent, UK"
+    }
   },
   {
     "id": "SKU-STK-VIC-5A",
     "sku": "STK-VIC-5A",
-    "name": "Vic Firth American Classic 5A (Hickory)",
+    "name": "Vic Firth American Classic 5A Hickory Sticks",
     "category": "Sticks & Heads",
     "brand": "Vic Firth",
     "wholesaleCost": 4.80,
     "retailPrice": 11.99,
+    "originalPrice": 14.50,
     "stock": 20,
     "reorderThreshold": 6,
     "supplier": "JHS",
-    "description": "The world's most popular stick size. Premium select USA hickory with wood tear-drop tip.",
-    "badge": "Drummer Essential",
+    "description": "The world's #1 stick choice. Premium select USA hickory with wood tear-drop tip for rich cymbal clarity and balanced rebound.",
+    "badge": "Top Seller",
     "imageText": "VIC 5A",
-    "color": "0B0F1D/ec4899"
+    "color": "131829/E8475F",
+    "specs": {
+      "Diameter": "0.565\" | 1.44cm",
+      "Length": "16\" | 40.64cm",
+      "Tip": "Tear Drop Wood Tip"
+    }
   },
   {
     "id": "SKU-STK-VIC-5B",
     "sku": "STK-VIC-5B",
-    "name": "Vic Firth American Classic 5B (Hickory)",
+    "name": "Vic Firth American Classic 5B Hickory Sticks",
     "category": "Sticks & Heads",
     "brand": "Vic Firth",
     "wholesaleCost": 4.80,
     "retailPrice": 11.99,
+    "originalPrice": 14.50,
     "stock": 14,
     "reorderThreshold": 4,
     "supplier": "JHS",
-    "description": "Heavier shoulder and shaft for rock and heavy gigging power.",
+    "description": "Heavier shoulder and beefier shaft for rock power, rimshots, and hard-hitting gigging endurance.",
     "badge": "Power Hitters",
     "imageText": "VIC 5B",
-    "color": "0B0F1D/06b6d4"
+    "color": "131829/4A3AFF",
+    "specs": {
+      "Diameter": "0.595\" | 1.51cm",
+      "Length": "16\" | 40.64cm",
+      "Wood": "Select American Hickory"
+    }
   },
   {
     "id": "SKU-HED-REM-14CS",
     "sku": "HED-REM-14CS",
-    "name": "Remo Coated Ambassador 14\" Snare Head",
+    "name": "Remo Coated Ambassador 14\" Snare Batter Head",
     "category": "Sticks & Heads",
     "brand": "Remo",
     "wholesaleCost": 8.50,
     "retailPrice": 18.50,
+    "originalPrice": 21.99,
     "stock": 10,
     "reorderThreshold": 4,
     "supplier": "JHS",
-    "description": "Industry standard 10-mil single ply coated batter head for open, crisp snare response.",
-    "badge": "Live Pro",
+    "description": "Industry standard 10-mil single ply coated batter head for open, resonant, crisp snare articulation in live mix environments.",
+    "badge": "Stage Pro",
     "imageText": "REMO 14\"",
-    "color": "0B0F1D/ec4899"
+    "color": "131829/E8475F",
+    "specs": {
+      "Size": "14-Inch Diameter",
+      "Ply": "1-ply 10-mil Coated Film",
+      "Sound": "Warm, Open, Controlled Sustain"
+    }
   },
   {
     "id": "SKU-CAB-TMG-10FT",
     "sku": "CAB-TMG-10FT",
     "name": "Thingamagig Tour Grade 10ft Lead (Straight/Angle)",
     "category": "Cables",
-    "brand": "Thingamagig",
+    "brand": "Thingamagig Pro",
     "wholesaleCost": 4.20,
     "retailPrice": 15.99,
+    "originalPrice": 19.99,
     "stock": 15,
     "reorderThreshold": 5,
     "supplier": "Barnes & Mullins",
-    "description": "Heavy braided shield with gold contact plugs and heat-shrink relief. Zero stage crackle.",
+    "description": "Heavy braided shield with 24k gold contact plugs, dual heat-shrink relief, and zero microphonic crackle on active stages.",
     "badge": "Tour Tough",
     "imageText": "10ft CABLE",
-    "color": "0B0F1D/06b6d4"
+    "color": "131829/4A3AFF",
+    "specs": {
+      "Length": "10ft / 3.0m",
+      "Connectors": "1/4\" Straight to 1/4\" Right Angle (Gold)",
+      "Warranty": "Lifetime Gig Guarantee"
+    }
   },
   {
     "id": "SKU-CAB-TMG-20XLR",
     "sku": "CAB-TMG-20XLR",
     "name": "Thingamagig Tour Grade 20ft Balanced XLR Mic Cable",
     "category": "Cables",
-    "brand": "Thingamagig",
+    "brand": "Thingamagig Pro",
     "wholesaleCost": 5.80,
     "retailPrice": 19.99,
+    "originalPrice": 24.99,
     "stock": 12,
     "reorderThreshold": 4,
     "supplier": "Barnes & Mullins",
-    "description": "Oxygen-free copper conductor with heavy duty chuck-type strain relief.",
+    "description": "Oxygen-free copper conductor with heavy duty chuck-type strain relief and matte flexible jacket that coils flat every time.",
     "badge": "Vocal & DI",
     "imageText": "20ft XLR",
-    "color": "0B0F1D/ec4899"
+    "color": "131829/E8475F",
+    "specs": {
+      "Length": "20ft / 6.0m",
+      "Pinout": "Neutrik-style 3-Pin Balanced XLR",
+      "Shielding": "98% Spiral OFC Copper"
+    }
   },
   {
     "id": "SKU-EMG-GAFF-50M",
     "sku": "EMG-GAFF-50M",
     "name": "Thingamagig Pro Stage Matte Black Gaff Tape (50mm x 50m)",
     "category": "Emergency Essentials",
-    "brand": "Thingamagig",
+    "brand": "Thingamagig Pro",
     "wholesaleCost": 3.50,
     "retailPrice": 7.99,
+    "originalPrice": 9.99,
     "stock": 25,
     "reorderThreshold": 8,
     "supplier": "Direct Wholesaler",
-    "description": "High residue-free adhesion for cable dressing, stage marking and emergency gear fixes.",
+    "description": "High residue-free adhesion for cable dressing, stage marking, drum damping, and emergency rig repairs. Tears clean by hand.",
     "badge": "Gig Saver",
     "imageText": "GAFF 50M",
-    "color": "0B0F1D/06b6d4"
+    "color": "131829/4A3AFF",
+    "specs": {
+      "Dimensions": "50mm Wide x 50 Metres Long",
+      "Finish": "Non-reflective Matte Stage Black",
+      "Residue": "Zero-Residue Clean Removal"
+    }
   },
   {
     "id": "SKU-EMG-9VBAT-6PK",
     "sku": "EMG-9VBAT-6PK",
     "name": "Thingamagig Tour Industrial 9V Alkaline Batteries (6-Pack)",
     "category": "Emergency Essentials",
-    "brand": "Thingamagig",
+    "brand": "Thingamagig Pro",
     "wholesaleCost": 2.20,
     "retailPrice": 5.99,
+    "originalPrice": 7.50,
     "stock": 30,
     "reorderThreshold": 10,
     "supplier": "Direct Wholesaler",
-    "description": "Long-life alkaline cells for active preamps, wireless beltpacks, and acoustic pickups.",
+    "description": "Long-life alkaline cells engineered for active preamps, wireless guitar beltpacks, IEM receivers, and acoustic preamps.",
     "badge": "Must Have",
     "imageText": "9V BATTERY",
-    "color": "0B0F1D/ec4899"
+    "color": "131829/E8475F",
+    "specs": {
+      "Pack Size": "6x 9V Industrial Blocks (6LR61)",
+      "Chemistry": "High-Drain Alkaline",
+      "Shelf Life": "7-Year Storage Ready"
+    }
   },
   {
     "id": "SKU-EMG-TUN-CLIP",
     "sku": "EMG-TUN-CLIP",
-    "name": "Thingamagig Fast-Response Clip-on Tuner",
+    "name": "Thingamagig Fast-Response Chromatic Clip-on Tuner",
     "category": "Emergency Essentials",
-    "brand": "Thingamagig",
+    "brand": "Thingamagig Pro",
     "wholesaleCost": 3.80,
     "retailPrice": 12.99,
+    "originalPrice": 16.99,
     "stock": 15,
     "reorderThreshold": 5,
     "supplier": "Strings & Things Ltd",
-    "description": "High-contrast color LCD, vibration-based chromatic tuning for noisy backstage environments.",
-    "badge": "Tuning",
+    "description": "High-contrast full-color LCD, vibration-based piezo sensor for accurate tuning in deafening backstage environments.",
+    "badge": "Accurate",
     "imageText": "TUNER",
-    "color": "0B0F1D/06b6d4"
+    "color": "131829/4A3AFF",
+    "specs": {
+      "Display": "360-Degree Multi-Angle Color LCD",
+      "Tuning Modes": "Chromatic, Guitar, Bass, Violin, Ukulele",
+      "Battery": "CR2032 (Included)"
+    }
   }
 ]
